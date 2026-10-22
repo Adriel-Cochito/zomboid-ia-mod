@@ -1,0 +1,3 @@
+name=TTS NPC Bridge
+id=TTS_NPC_Bridge
+description=Ponte entre o NPC companheiro e o daemon de voz/IA

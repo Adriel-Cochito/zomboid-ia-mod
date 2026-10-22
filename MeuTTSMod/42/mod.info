@@ -1,0 +1,4 @@
+name=TTS Dynamic Voice Mod
+id=TTSDynamicVoiceMod
+description=Mod para capturar eventos de jogo e acionar a API local de TTS.
+poster=poster.png

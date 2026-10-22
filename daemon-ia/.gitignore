@@ -1,0 +1,54 @@
+# ---------- Ambiente virtual ----------
+venv/
+.venv/
+env/
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# ---------- Audios (conteudo ignorado, a pasta continua no repo via .gitkeep) ----------
+audios_gerados/*
+!audios_gerados/.gitkeep
+
+Audios bons/*
+!Audios bons/.gitkeep
+
+# Saidas soltas na raiz (testes antigos)
+/saida_*.wav
+
+# ---------- Vozes de referencia ----------
+# Descomente se NAO quiser versionar as vozes (pessoais/com direitos autorais):
+# modelos_voz/*
+# !modelos_voz/.gitkeep
+
+# ---------- Logs e temporarios ----------
+*.log
+*.tmp
+*.tmp.wav
+teste.txt
+
+# ---------- Preferências locais ----------
+config_usuario.json
+data/
+
+# ---------- Ambiente baixado pelo preparador ----------
+runtime/
+dist/
+build/
+Preparar.spec
+build_preparar.log
+
+# ---------- Segredos ----------
+.env
+*.key
+
+# ---------- Editor / SO ----------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,85 @@
+-- =====================================================================
+-- TEMPLATE de adapter para um mod de NPC REAL (Superb Survivors, Bandits, etc.)
+-- Salve como NPC_AdapterXXX.lua em media\lua\client\ do mod TTS_NPC_Bridge
+-- e REMOVA/renomeie o NPC_AdapterStub.lua (só um adapter por vez).
+--
+-- Este arquivo NÃO inventa a API do mod base: cada "TODO" precisa ser
+-- preenchido depois do spike (ler os .lua do mod e achar as funções reais).
+-- A ponte NÃO muda; só este arquivo conhece o mod base.
+-- =====================================================================
+require "NPC_Bridge"
+
+local Adapter = { name = "NOME_DO_MOD" }
+
+-- Mapa dos modos canônicos para os nomes/valores que o mod base usa.
+-- TODO: preencher com os valores reais (ex.: nome da "tarefa"/"programa" do mod).
+local MODE_MAP = {
+    seguir   = nil,  -- TODO
+    ficar    = nil,  -- TODO
+    defender = nil,  -- TODO
+    saquear  = nil,  -- TODO
+}
+
+-- Devolve o objeto do NPC companheiro do jogador (ou nil).
+-- TODO: como o mod base expõe "meu companheiro"? (lista de party/grupo, tabela global, etc.)
+local function findCompanion(player)
+    return nil
+end
+
+function Adapter.hasNpc(player)
+    return findCompanion(player) ~= nil
+end
+
+-- Mostrar o menu "Companheiro" quando clicar perto dele.
+-- TODO: comparar a posição do NPC com a dos worldobjects clicados, ou sempre true.
+function Adapter.isNpcNearby(player, worldobjects)
+    return findCompanion(player) ~= nil
+end
+
+function Adapter.npcName(player)
+    local npc = findCompanion(player)
+    return npc and "TODO_nome" or "Companheiro"
+end
+
+-- Estado enviado ao daemon a cada ~5 s.
+--   hp (0-100) do NPC, player_hp (0-100), threats = zumbis atacando o NPC/jogador,
+--   ammo = ok|empty|none, loot_near = itens úteis por perto (0 se não souber)
+-- TODO: ler cada campo do NPC real.
+function Adapter.getState(player)
+    local npc = findCompanion(player)
+    if not npc then return nil end
+    local bd = player:getBodyDamage()
+    return {
+        name = "TODO",
+        mode = "seguir",     -- TODO: modo atual lido do mod base (traduzido p/ os canônicos)
+        hp = 100,            -- TODO
+        player_hp = bd and math.floor(bd:getOverallBodyHealth()) or 100,
+        threats = 0,         -- TODO
+        ammo = "ok",         -- TODO
+        loot_near = 0,       -- TODO
+    }
+end
+
+-- Aplica o modo pedido pela IA/menu USANDO a função nativa do mod (sem reimplementar nada).
+function Adapter.setMode(player, mode)
+    local npc = findCompanion(player)
+    local value = MODE_MAP[mode]
+    if not npc or value == nil then return end
+    -- TODO: chamar a função do mod base que muda o comportamento do NPC para 'value'
+end
+
+-- Mostra a fala (balão/legenda) do NPC.
+-- TODO: se o NPC for um IsoPlayer, algo como npc:Say(text); senão, HaloTextHelper etc.
+function Adapter.say(player, text)
+    local npc = findCompanion(player)
+    if npc and npc.Say then pcall(function() npc:Say(text) end) end
+end
+
+-- Eventos pontuais. Cada item: { evt = "hurt"|"kill"|"loot"|"no_ammo"|"died", payload = "k=v" }
+--   hurt  -> "amount=10"     kill -> "total=3"     loot -> "item=Lata de Feijão"
+-- TODO: comparar o estado atual com o anterior (vida caiu, abates subiram, inventário cresceu).
+function Adapter.pollEvents(player)
+    return {}
+end
+
+NPC_Bridge.registerAdapter(Adapter)

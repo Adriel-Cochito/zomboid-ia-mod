@@ -1,0 +1,52 @@
+# ==========================================
+# 1. ARQUIVOS PADRÃO DO PROJECT ZOMBOID
+# ==========================================
+examplemod/
+default.txt
+reset-mods-*.txt
+
+# ==========================================
+# 2. REGRAS DA PASTA DAEMON (daemon-ia/)
+# ==========================================
+# Ambiente virtual
+daemon-ia/venv/
+daemon-ia/.venv/
+daemon-ia/env/
+
+# Python e Cache
+**/__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Áudios Gerados e Temporários (mantém pastas via .gitkeep)
+daemon-ia/audios_gerados/*
+!daemon-ia/audios_gerados/.gitkeep
+
+daemon-ia/Audios bons/*
+!daemon-ia/Audios bons/.gitkeep
+
+daemon-ia/_backup_npc/
+
+# Arquivos de saída de testes antigos
+daemon-ia/saida_*.wav
+
+# Logs e Temporários
+*.log
+*.tmp
+*.tmp.wav
+daemon-ia/teste.txt
+
+# Segredos / Variáveis de Ambiente
+.env
+*.key
+
+# ==========================================
+# 3. SISTEMA OPERACIONAL / EDITORES
+# ==========================================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

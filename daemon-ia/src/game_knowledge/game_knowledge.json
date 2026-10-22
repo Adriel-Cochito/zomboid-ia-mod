@@ -1,0 +1,47 @@
+{
+  "versao": "1.0",
+  "jogo": "Project Zomboid",
+  "categorias": {
+    "saude": {
+      "descricao": "Tratamento de ferimentos, sangramentos e condições físicas adversas.",
+      "itens_reais": ["Bandage", "Disinfected Bandage", "Alcohol Wipes", "Disinfectant", "Needle & Thread", "Splint", "Painkillers", "Antibiotics"],
+      "acoes_validas": [
+        "Estancar sangramento usando bandagens limpas.",
+        "Desinfetar feridas profundas para evitar infeção.",
+        "Costurar cortes profundos com agulha e linha.",
+        "Imobilizar fraturas ósseas com talas."
+      ]
+    },
+    "suprimentos": {
+      "descricao": "Busca por comida, água, ferramentas essenciais e armazenamento.",
+      "itens_reais": ["Canned Food", "Can Opener", "Hammer", "Saw", "Screwdriver", "Crowbar", "Water Bottle", "Cooking Pot", "Garbage Bag"],
+      "acoes_validas": [
+        "Procurar alimentos enlatados em cozinhas e armazéns.",
+        "Usar abridor de latas para consumir comida enlatada.",
+        "Coletar água da chuva em garrafas ou panelas.",
+        "Ferver água em fogueiras ou fogões para purificar.",
+        "Localizar ferramentas fundamentais (martelo, serra, chave de fenda, pé de cabra) em garagens."
+      ]
+    },
+    "fortificacao": {
+      "descricao": "Segurança da base, barricadas e construção civil básica.",
+      "itens_reais": ["Planks", "Nails", "Axe", "Doorknob", "Sheet Rope"],
+      "acoes_validas": [
+        "Coletar tábuas de madeira e pregos para barricar janelas e portas vulneráveis.",
+        "Cortar árvores com machado para obter toras de madeira.",
+        "Instalar cordas de lençol nas janelas dos andares superiores como rota de fuga.",
+        "Construir caixas de madeira para armazenamento de loot."
+      ]
+    },
+    "veiculos_energia": {
+      "descricao": "Gestão de transporte, combustível e eletricidade pós-apagão.",
+      "itens_reais": ["Gas Can", "Car Battery", "Tire", "How to Use Generators Magazine", "Generator"],
+      "acoes_validas": [
+        "Ler a revista de engenharia elétrica para aprender a ligar geradores.",
+        "Abastecer o gerador com galões de gasolina para manter a energia da base.",
+        "Procurar combustível nos postos da cidade usando galões vazios.",
+        "Verificar o porta-luvas de veículos abandonados em busca de chaves."
+      ]
+    }
+  }
+}

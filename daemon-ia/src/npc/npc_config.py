@@ -7,7 +7,7 @@ from src.config import (
 )
 
 NPC_ENABLED = True
-NPC_NAME = "Marcos"
+NPC_NAME = "NPC"
 
 # --- Arquivos de troca com o Lua (mesma pasta do TTS_events.txt) ---
 LUA_DIR = EVENTS_FILE.parent

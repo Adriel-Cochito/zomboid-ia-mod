@@ -267,9 +267,11 @@ class TTSDaemon:
     def run(self):
         prepare_runtime_env()
         log("=== A INICIAR DAEMON DE IA E VOZ (PROJECT ZOMBOID) ===")
-        warmup_ollama_service()
+        # XTTS primeiro: se o Ollama aquecer antes, o carregamento CUDA do XTTS
+        # despeja o modelo e a conversa do NPC volta a dar timeout.
         self.audio_pipeline.load_tts_model()
         self.precache_static_phrases()
+        warmup_ollama_service()
         if self.npc:
             try:
                 self.npc.start()

@@ -87,7 +87,7 @@ Com o companheiro presente e por perto, o botão direito no mundo abre **Companh
 - Seguir
 - Ficar aqui
 - Defender
-- Buscar itens úteis
+- Buscar itens uteis
 - Falar... (caixa de texto; o texto vai como evento `say`)
 
 Esses cliques não mudam o NPC na hora. Eles avisam o daemon, que decide e devolve `mode`, `say` ou `fetch`.

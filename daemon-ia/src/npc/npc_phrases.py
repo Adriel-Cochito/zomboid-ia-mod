@@ -45,8 +45,8 @@ class PhraseMaker:
         return re.sub(r"\s+", " ", txt).strip()
 
     @staticmethod
-    def _valid(txt: str, banned, item_words, max_words=14) -> bool:
-        if not (2 <= len(txt.split()) <= max_words):
+    def _valid(txt: str, banned, item_words, max_words=14, min_words=2) -> bool:
+        if not (min_words <= len(txt.split()) <= max_words):
             return False
         low = txt.lower()
         if any(re.search(rf"\b{re.escape(w)}\b", low) for w in banned):
@@ -96,10 +96,16 @@ class PhraseMaker:
             prompt = (f"Estado: {state.summary()}.\nO jogador disse: \"{player_text}\"\n"
                       "Responda como o companheiro, em uma frase curta. "
                       "Não prometa ações (como seguir, ficar ou atacar): apenas converse.\nFala:")
-            raw = self.llm_fn("npc_chat", prompt,
-                              system_override=system_prompt(self.name, self.memory),
-                              temperature=0.8)
+            raw = self.llm_fn(
+                "npc_chat",
+                prompt,
+                system_override=system_prompt(self.name, self.memory),
+                temperature=0.8,
+                retries=1,
+            )
             txt = self._clean(raw)
-            if txt and self._valid(txt, [], [], max_words=22):
+            if txt and self._valid(txt, [], [], max_words=22, min_words=1):
                 return txt
+            if raw:
+                log(f"descartada (chat): \"{txt}\"")
         return self.static("unknown")

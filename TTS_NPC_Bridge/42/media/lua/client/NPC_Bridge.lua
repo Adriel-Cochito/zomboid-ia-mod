@@ -198,7 +198,7 @@ local function onFillWorldObjectContextMenu(playerNum, context, worldobjects, te
     sub:addOption("Seguir",   player, function() emit("cmd", "seguir") end)
     sub:addOption("Ficar aqui", player, function() emit("cmd", "ficar") end)
     sub:addOption("Defender", player, function() emit("cmd", "defender") end)
-    sub:addOption("Buscar itens úteis",  player, function() emit("cmd", "saquear") end)
+    sub:addOption("Buscar itens uteis",  player, function() emit("cmd", "saquear") end)
     sub:addOption("Falar...", playerNum, NPC_Bridge.askText)
 end
 

@@ -17,7 +17,11 @@ USE_LLM = True
 
 # Endpoint de CHAT (aceita system prompt; muito melhor que /generate para modelos pequenos)
 OLLAMA_CHAT_URL = "http://localhost:11434/api/chat"
-LLM_TIMEOUT_S = 10
+# Com XTTS na VRAM o gemma2:2b demora a carregar; 10s cortava toda resposta do NPC.
+LLM_TIMEOUT_S = 60
+LLM_WARMUP_TIMEOUT_S = 180
+LLM_KEEP_ALIVE = "30m"
+LLM_NUM_PREDICT = 48       # falas curtas; evita geração longa
 LLM_TEMPERATURE = 1.0      # mais alto = mais criativo (baixe p/ 0.8 se ficar maluco)
 LLM_HISTORY = 10           # quantas falas recentes DO MESMO EVENTO a LLM deve evitar
 
